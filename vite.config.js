@@ -3,7 +3,19 @@ import vue from '@vitejs/plugin-vue'
 import { crx } from '@crxjs/vite-plugin'
 import manifest from './manifest.json' assert { type: 'json' } // Node >=17
 
+const viteManifestHackIssue846 = {
+  // 解决报错 [crx:content-script-resources] Error: vite manifest is missing
+  // Workaround from https://github.com/crxjs/chrome-extension-tools/issues/846#issuecomment-1861880919.
+  // https://github.com/crxjs/chrome-extension-tools/issues/846
+  name: 'manifestHackIssue846',
+  renderCrxManifest(_manifest, bundle) {
+    bundle['manifest.json'] = bundle['.vite/manifest.json']
+    bundle['manifest.json'].fileName = 'manifest.json'
+    delete bundle['.vite/manifest.json']
+  },
+}
+
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [vue(), crx({ manifest }),],
+  plugins: [vue(), viteManifestHackIssue846, crx({ manifest }),],
 })
