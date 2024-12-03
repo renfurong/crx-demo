@@ -7,3 +7,8 @@ Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://
 ```
   "use_dynamic_url": false
 ```
+
+### 参考文档
+https://crxjs.dev/vite-plugin/getting-started/vue/create-project
+https://18055975947.github.io/extension/teach/vue-chrome.html
+https://blog.csdn.net/guoqiankunmiss/article/details/137139597
