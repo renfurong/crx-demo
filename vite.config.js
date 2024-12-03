@@ -18,4 +18,16 @@ const viteManifestHackIssue846 = {
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [vue(), viteManifestHackIssue846, crx({ manifest }),],
+  build: {
+    rollupOptions: {
+      input: {
+        popup: 'src/popup/index.html'
+      },
+      output: {
+        assetFileNames: 'assets/[name]-[hash].[ext]', // 静态资源
+        chunkFileNames: 'js/[name]-[hash].js', // 代码分割中产生的 chunk
+        entryFileNames: 'js/[name]-[hash].js'
+      }
+    }
+  }
 })
