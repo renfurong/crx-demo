@@ -3,6 +3,11 @@
 hello
 <h1>{{ count }}</h1>
 <button @click="test">点击</button>
+<div class="test">
+  <div>
+    less
+  </div>
+</div>
 </template>
 
 <script setup>
@@ -23,5 +28,12 @@ const test = () => {
 <style scoped>
 .read-the-docs {
   color: #888;
+}
+
+.test {
+ >div {
+  color: purple;
+  font-weight: bold;
+ }
 }
 </style>
