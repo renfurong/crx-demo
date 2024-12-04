@@ -2,7 +2,17 @@
   "manifest_version": 3,
   "name": "CRXJS Vue Vite Example",
   "version": "1.0.0",
+  "description": "我是 Chrome 插件的描述",
+  "icons": {
+    "16": "icons/logo.png",
+    "19": "icons/logo.png",
+    "38": "icons/logo.png",
+    "48": "icons/logo.png",
+    "128": "icons/logo.png"
+  },
   "action": {
+    "default_title": "Vue Chrome Ext",
+    "default_icon": "icons/logo.png",
     "default_popup": "/popup/index.html"
   },
   "background": {
@@ -24,7 +34,9 @@
   "web_accessible_resources": [
     {
       "resources": [
+        "popup/*",
         "assets/*",
+        "icons/*",
         "js/*"
       ],
       "matches": []
