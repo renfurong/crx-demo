@@ -1,16 +1,24 @@
+
+<template>
+hello
+<h1>{{ count }}</h1>
+<button @click="test">点击</button>
+</template>
+
 <script setup>
 import { ref } from 'vue'
+import { useCounterStore } from '../store/counter'
+import { storeToRefs } from 'pinia'
 
 defineProps({
   msg: String,
 })
-
-const count = ref(0)
+const { count } = storeToRefs(useCounterStore())
+const test = () => {
+  useCounterStore().increment()
+}
 </script>
 
-<template>
-hello
-</template>
 
 <style scoped>
 .read-the-docs {
