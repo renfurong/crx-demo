@@ -3,15 +3,15 @@
   "name": "CRXJS Vue Vite Example",
   "version": "1.0.0",
   "action": {
-    "default_popup": "src/popup/index.html"
+    "default_popup": "/popup/index.html"
   },
   "background": {
-    "service_worker": "src/background/service-worker.js"
+    "service_worker": "/background/service-worker.js"
   },
   "content_scripts": [
     {
       "js": [
-        "src/content/content.js"
+        "/content/content.js"
       ],
       "matches": [
         "<all_urls>"
