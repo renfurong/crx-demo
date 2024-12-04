@@ -3,6 +3,7 @@
 hello
 <h1>{{ count }}</h1>
 <button @click="test">点击</button>
+<n-button>naive-ui</n-button>
 <div class="test">
   <div>
     less

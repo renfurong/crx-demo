@@ -4,6 +4,9 @@ import { crx } from '@crxjs/vite-plugin'
 import manifest from './manifest.json' assert { type: 'json' } // Node >=17
 import path from 'path'
 import copy from 'rollup-plugin-copy' // 引入 rollup-plugin-copy,
+import AutoImport from 'unplugin-auto-import/vite'
+import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
+import Components from 'unplugin-vue-components/vite'
 
 const viteManifestHackIssue846 = {
   // 解决报错 [crx:content-script-resources] Error: vite manifest is missing
@@ -28,6 +31,22 @@ export default defineConfig({
       { src: 'manifest.json', dest: 'dist' }, // 复制 manifest.json 到 dist 目录 , 不需要压缩
       { src: "src/icons/**", dest: 'dist/icons' } // 复制 src/icons/** 到 dist/icons 目录
     ]
+  }),
+  AutoImport({
+    imports: [
+      'vue',
+      {
+        'naive-ui': [
+          'useDialog',
+          'useMessage',
+          'useNotification',
+          'useLoadingBar'
+        ]
+      }
+    ]
+  }),
+  Components({
+    resolvers: [NaiveUiResolver()]
   })
   ],
   build: {
